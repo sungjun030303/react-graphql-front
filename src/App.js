@@ -5,6 +5,11 @@ import client from './client'
 import { SEARCH_REPOSITORIES } from './graphql'
 
 
+const StarButton = props => {
+  const totalCount = props.node.stargazers.totalCount 
+  return <button>{totalCount === 1 ? "1 star" : `${totalCount} stars`}</button>
+}
+
 const PER_PAGE = 5
 const DEFAULT_STATE = {
   first: PER_PAGE,
@@ -13,8 +18,6 @@ const DEFAULT_STATE = {
   before: null,
   query: "フロントエンドエンジニア"
 }
-
-
 
 
 class App extends Component {
@@ -91,6 +94,8 @@ class App extends Component {
                           return (
                              <li key={node.id}>
                                   <a href={node.url} target="_blank"  rel="noopener noreferrer">{node.name}</a>
+                                  &nbsp;
+                                <StarButton node={node}/>
                              </li>     
                           );
                         }
