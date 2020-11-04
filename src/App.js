@@ -1,3 +1,5 @@
+const  GIT_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+console.log(GIT_TOKEN)
 function App() {
   return (
     <div className="App">
